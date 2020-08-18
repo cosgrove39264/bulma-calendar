@@ -110,7 +110,7 @@ export default class bulmaCalendar extends EventEmitter {
   }
 
   // Set language
-  set lang(lang = 'en') {
+  set lang(lang) {
     try {
       this._locale = require(`date-fns/locale/${lang}/index.js`);
     } catch (e) {
@@ -120,8 +120,8 @@ export default class bulmaCalendar extends EventEmitter {
       this._lang = lang;
       this.datePicker.lang = lang;
       this.timePicker.lang = lang;
-      return this;
     }
+    return this;
   }
   // Get current language
   get lang() {
@@ -144,7 +144,7 @@ export default class bulmaCalendar extends EventEmitter {
   /**
    * * Date setter and getter
    */
-  set date(date = null) {
+  set date(date) {
     this.datePicker.date = date;
     return this;
   }
@@ -153,7 +153,7 @@ export default class bulmaCalendar extends EventEmitter {
     return this.datePicker.date;
   }
 
-  set startDate(date = undefined) {
+  set startDate(date) {
     this.datePicker.start = dateUtils.parse(date, this.dateFormat);
     return this;
   }
@@ -161,7 +161,7 @@ export default class bulmaCalendar extends EventEmitter {
     return this.datePicker.start;
   }
 
-  set endDate(date = undefined) {
+  set endDate(date) {
     this.datePicker.end = dateUtils.parse(date, this.dateFormat);
     return this;
   }
@@ -172,7 +172,7 @@ export default class bulmaCalendar extends EventEmitter {
   /**
    * minDate getter and setters
    */
-  set minDate(date = undefined) {
+  set minDate(date) {
     this.datePicker.minDate = dateUtils.parse(date, this.dateFormat);
     return this;
   }
@@ -182,7 +182,7 @@ export default class bulmaCalendar extends EventEmitter {
   }
 
   // Set maxDate
-  set maxDate(date = undefined) {
+  set maxDate(date) {
     this.datePicker.maxDate = dateUtils.parse(date, this.dateFormat);
     return this;
   }
@@ -204,7 +204,7 @@ export default class bulmaCalendar extends EventEmitter {
   /**
    * * Time setter and getter
    */
-  set time(time = null) {
+  set time(time) {
     this.timePicker.time = time;
     return this;
   }
@@ -213,7 +213,7 @@ export default class bulmaCalendar extends EventEmitter {
     return this.timePicker.time;
   }
 
-  set startTime(time = undefined) {
+  set startTime(time) {
     this.timePicker.start = time;
     return this;
   }
@@ -221,7 +221,7 @@ export default class bulmaCalendar extends EventEmitter {
     return this.timePicker.start;
   }
 
-  set endTime(time = undefined) {
+  set endTime(time) {
     this.timePicker.end = time;
     return this;
   }
@@ -232,7 +232,7 @@ export default class bulmaCalendar extends EventEmitter {
   /**
    * minTime getter and setters
    */
-  set minTime(time = undefined) {
+  set minTime(time) {
     this.timePicker.minTime = time;
     return this;
   }
@@ -242,7 +242,7 @@ export default class bulmaCalendar extends EventEmitter {
   }
 
   // Set maxTime
-  set maxTime(time = undefined) {
+  set maxTime(time) {
     this.timePicker.maxTime = time;
     return this;
   }
@@ -424,7 +424,7 @@ export default class bulmaCalendar extends EventEmitter {
 
   /**
    * Get / Set datetimePicker value
-   * @param {*} date 
+   * @param {*} date
    */
   value(value = null) {
     if (value) {
