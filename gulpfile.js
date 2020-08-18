@@ -18,6 +18,7 @@ const postcss = require('gulp-postcss');
 const run = require('gulp-run');
 const sass = require('gulp-sass');
 const uglify = require('gulp-uglify');
+const terser = require('gulp-terser');
 
 /**
  * ----------------------------------------
@@ -135,7 +136,7 @@ gulp.task('build:scripts', function () {
             exclude: /(node_modules)/,
             loader: 'babel-loader',
             options: {
-              babelrc: './babelrc'
+              babelrc: true
             }
           }, ],
         }
@@ -143,12 +144,15 @@ gulp.task('build:scripts', function () {
       .pipe(concat(config.javascript.output.filename + '.js'))
       .pipe(gulp.dest(config.javascript.destination))
       .pipe(concat(config.javascript.output.filename + '.min.js'))
+      .pipe(terser())
+      /*
       .pipe(uglify({
             keep_fnames: true,
             ie8: false,
           }).on('error', function (err) {
         log(colors.red('[Error]'), err.toString());
       }))
+       */
       .pipe(gulp.dest(config.javascript.destination)
         .on('error', function (err) {
           log(colors.red('[Error]'), err.toString());

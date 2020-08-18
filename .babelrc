@@ -2,16 +2,18 @@
   "sourceMaps": false,
   "ignore": ["node_modules/**"],
   "presets": [
-    ["env", {
+    ["@babel/env", {
       "modules": false,
       "targets": {
         "browsers": [ ">0.25%", "ie 11"]
-      }
+      }   ,
+      "useBuiltIns": "usage",
+      "corejs": "3.6.5"
     }]
   ],
   "env": {
     "test": {
-      "presets": [["env"]]
+      "presets": [["@babel/env"]]
     }
   },
   "plugins": [
